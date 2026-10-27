@@ -215,7 +215,7 @@ function LeadForm() {
       <button type="submit" disabled={status === "sending"} className={`${btnPrimary} w-full disabled:opacity-60`}>
         {status === "sending" ? "Sending…" : "Request a call back"}
       </button>
-      {status === "error" && <p role="alert" className="text-base text-destructive">Something went wrong. Please try again, or call or text {SITE.phoneDisplay}.</p>}
+      {status === "error" && <p role="alert" className="text-base text-destructive">Something went wrong. Please try again, or <a className="font-semibold underline" href={SITE.phoneHref}>call or text {SITE.phoneDisplay}</a>.</p>}
       <p className="text-center text-base text-muted-foreground">We'll call you within 1 business day. We never sell your information.</p>
     </form>
   );
