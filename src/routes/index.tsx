@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { CalendarClock, FileCheck2, Search, Wallet, PhoneCall, ShieldCheck, BellRing } from "lucide-react";
+import { CalendarClock, FileCheck2, Search, Wallet, PhoneCall, ShieldCheck, BellRing, Check } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { supabase } from "@/integrations/supabase/client";
 import { SITE } from "@/lib/site";
@@ -26,7 +26,24 @@ const steps = [
   { icon: FileCheck2, title: "We file your new certificate with the city", body: "No portals, no forms for you." },
   { icon: CalendarClock, title: "We watch your deadlines", body: "We remind you before anything expires again." },
 ];
-const benefits = [
+const onYourOwn = [
+  "Find a certified lead inspector (it must be a state-certified risk assessor or EPA-certified dust sampling technician; home test kits don't count)",
+  "Schedule the visit and arrange access with your tenant",
+  "Wait for lab results",
+  "If a unit fails: hire a certified renovator to fix it, then schedule a retest",
+  "Create an account on the city's lead certification website and upload the certificate correctly",
+  "Make sure it matches your rental license, or the license can't be renewed",
+  "Remember to do it all again before it expires",
+];
+const withKept = [
+  "One call or text",
+  "We find and schedule the certified inspector",
+  "We coordinate access with you or your tenant",
+  "If a unit fails, we explain your options and help coordinate the fix and retest",
+  "We upload your certificate to the city for you",
+  "We remind you before it expires again",
+  "You don't pay unless it's done",
+];
   { icon: Wallet, title: "No upfront cost", body: "You only pay once your certificate is filed." },
   { icon: PhoneCall, title: "One call, done", body: "We coordinate the inspector, paperwork, and city upload." },
   { icon: ShieldCheck, title: "Protect your rent", body: "Stay legally able to collect rent and renew your license." },
