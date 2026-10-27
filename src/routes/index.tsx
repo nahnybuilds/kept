@@ -44,6 +44,7 @@ const withKept = [
   "We remind you before it expires again",
   "You don't pay unless it's done",
 ];
+const benefits = [
   { icon: Wallet, title: "No upfront cost", body: "You only pay once your certificate is filed." },
   { icon: PhoneCall, title: "One call, done", body: "We coordinate the inspector, paperwork, and city upload." },
   { icon: ShieldCheck, title: "Protect your rent", body: "Stay legally able to collect rent and renew your license." },
