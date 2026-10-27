@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { CalendarClock, FileCheck2, Search, Wallet, PhoneCall, ShieldCheck, BellRing } from "lucide-react";
+import { CalendarClock, FileCheck2, Search, Wallet, PhoneCall, ShieldCheck, BellRing, Check } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { supabase } from "@/integrations/supabase/client";
 import { SITE } from "@/lib/site";
@@ -25,6 +25,24 @@ const steps = [
   { icon: Search, title: "We schedule a certified lead inspector", body: "A state/EPA-certified inspector visits your property." },
   { icon: FileCheck2, title: "We file your new certificate with the city", body: "No portals, no forms for you." },
   { icon: CalendarClock, title: "We watch your deadlines", body: "We remind you before anything expires again." },
+];
+const onYourOwn = [
+  "Find a certified lead inspector (it must be a state-certified risk assessor or EPA-certified dust sampling technician; home test kits don't count)",
+  "Schedule the visit and arrange access with your tenant",
+  "Wait for lab results",
+  "If a unit fails: hire a certified renovator to fix it, then schedule a retest",
+  "Create an account on the city's lead certification website and upload the certificate correctly",
+  "Make sure it matches your rental license, or the license can't be renewed",
+  "Remember to do it all again before it expires",
+];
+const withKept = [
+  "One call or text",
+  "We find and schedule the certified inspector",
+  "We coordinate access with you or your tenant",
+  "If a unit fails, we explain your options and help coordinate the fix and retest",
+  "We upload your certificate to the city for you",
+  "We remind you before it expires again",
+  "You don't pay unless it's done",
 ];
 const benefits = [
   { icon: Wallet, title: "No upfront cost", body: "You only pay once your certificate is filed." },
@@ -101,6 +119,36 @@ function Index() {
               </li>
             ))}
           </ol>
+        </Section>
+
+        <Section title="Doing it yourself vs. with Kept">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-2xl border border-border bg-background p-6">
+              <h3 className="text-xl font-semibold">On your own</h3>
+              <ul className="mt-4 space-y-3">
+                {onYourOwn.map((t) => (
+                  <li key={t} className="flex gap-3 text-base">
+                    <span aria-hidden className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-muted-foreground/40" />
+                    <span className="text-muted-foreground">{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-2xl border-2 border-primary/30 bg-secondary p-6">
+              <h3 className="text-xl font-semibold text-primary">With Kept</h3>
+              <ul className="mt-4 space-y-3">
+                {withKept.map((t) => (
+                  <li key={t} className="flex gap-3 text-base">
+                    <Check aria-hidden className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className="mt-6 text-base text-muted-foreground">
+            Many landlords don't realize their certificate expired until they try to renew their rental license or have a tenant dispute. We help you get ahead of it.
+          </p>
         </Section>
 
         <Section title="What you get" muted>
