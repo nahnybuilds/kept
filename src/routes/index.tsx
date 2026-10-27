@@ -210,7 +210,7 @@ function LeadForm() {
         <div className="mt-2 grid grid-cols-3 gap-2">
           {["Morning", "Afternoon", "Evening"].map((t) => (
             <label key={t} className="flex min-h-14 cursor-pointer items-center justify-center rounded-xl border-2 border-input text-base font-medium has-[:checked]:border-primary has-[:checked]:bg-accent has-[:checked]:text-accent-foreground">
-              <input type="radio" name="best_time" value={t} className="sr-only" />{t}
+              <input type="radio" name="best_time" value={t} required className="sr-only" />{t}
             </label>
           ))}
         </div>
