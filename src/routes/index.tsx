@@ -32,7 +32,7 @@ const benefits = [
   { icon: ShieldCheck, title: "Protect your rent", body: "Stay legally able to collect rent and renew your license." },
   { icon: BellRing, title: "Never miss a deadline", body: "We track your lead certificate and rental license dates." },
 ];
-const faqs = [
+const faqs: [string, string][] = [
   ["Are you the City of Philadelphia?", "No. Kept is a private company. We're not affiliated with the City. We help landlords handle city requirements."],
   ["How did you find my property?", "Lead certificate and rental license records are public. We use them to reach landlords who may need help."],
   ["What if I already renewed?", "Great! Just ignore our letter, or text us and we'll update our records."],
@@ -215,7 +215,7 @@ function LeadForm() {
       <button type="submit" disabled={status === "sending"} className={`${btnPrimary} w-full disabled:opacity-60`}>
         {status === "sending" ? "Sending…" : "Request a call back"}
       </button>
-      {status === "error" && <p role="alert" className="text-base text-destructive">Something went wrong. Please try again, or call or text {SITE.phoneDisplay}.</p>}
+      {status === "error" && <p role="alert" className="text-base text-destructive">Something went wrong. Please try again, or <a className="font-semibold underline" href={SITE.phoneHref}>call or text {SITE.phoneDisplay}</a>.</p>}
       <p className="text-center text-base text-muted-foreground">We'll call you within 1 business day. We never sell your information.</p>
     </form>
   );
