@@ -75,7 +75,10 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-10 border-b border-border bg-background/95 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4">
-          <a href="#top" className="text-3xl font-bold tracking-tight text-primary">Kept</a>
+          <a href="#top" className="leading-none">
+            <span className="block text-3xl font-bold tracking-tight text-primary">Kept</span>
+            <span className="mt-1 block text-sm text-muted-foreground">Rental compliance, handled.</span>
+          </a>
           <a href={SITE.phoneHref} className="text-base font-semibold text-primary underline-offset-4 hover:underline sm:text-lg">
             Call or text {SITE.phoneDisplay}
           </a>
