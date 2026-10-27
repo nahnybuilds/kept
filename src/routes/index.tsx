@@ -121,6 +121,36 @@ function Index() {
           </ol>
         </Section>
 
+        <Section title="Doing it yourself vs. with Kept">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-2xl border border-border bg-background p-6">
+              <h3 className="text-xl font-semibold">On your own</h3>
+              <ul className="mt-4 space-y-3">
+                {onYourOwn.map((t) => (
+                  <li key={t} className="flex gap-3 text-base">
+                    <span aria-hidden className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-muted-foreground/40" />
+                    <span className="text-muted-foreground">{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-2xl border-2 border-primary/30 bg-secondary p-6">
+              <h3 className="text-xl font-semibold text-primary">With Kept</h3>
+              <ul className="mt-4 space-y-3">
+                {withKept.map((t) => (
+                  <li key={t} className="flex gap-3 text-base">
+                    <Check aria-hidden className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className="mt-6 text-base text-muted-foreground">
+            Many landlords don't realize their certificate expired until they try to renew their rental license or have a tenant dispute. We help you get ahead of it.
+          </p>
+        </Section>
+
         <Section title="What you get" muted>
           <div className="grid gap-4 sm:grid-cols-2">
             {benefits.map((b) => (
