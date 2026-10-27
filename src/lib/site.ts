@@ -4,5 +4,4 @@ export const SITE = {
   phoneHref: "tel:+12672239127",
   smsHref: "sms:+12672239127",
   email: "hello@keptlegal.co",
-  price: "$X",
 };
