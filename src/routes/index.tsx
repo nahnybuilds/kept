@@ -77,6 +77,9 @@ function Index() {
               <a href="#start" className={btnPrimary}>I got a letter</a>
               <a href={SITE.phoneHref} className={btnOutline}>Call or text {SITE.phoneDisplay}</a>
             </div>
+            <p className="mt-4 text-base">
+              <a href={SITE.smsHref} className="font-semibold text-primary underline underline-offset-4 hover:no-underline">Text us</a>
+            </p>
           </div>
         </section>
 
@@ -115,7 +118,7 @@ function Index() {
         <Section title="Simple pricing">
           <div className="rounded-2xl border-2 border-primary/30 bg-card p-6 sm:p-8">
             <p className="text-xl">
-              Starting at <strong className="text-2xl text-primary">{SITE.price}</strong> per unit. Includes the inspection, lab results, and filing with the city. You don't pay unless it's done.
+              Free quote for your property. Includes the inspection, lab results, and filing with the city. You don't pay unless it's done.
             </p>
             <p className="mt-4 text-base text-muted-foreground">
               If a unit doesn't pass, we'll explain your options and help coordinate the fix before retesting.
@@ -188,7 +191,7 @@ function LeadForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-5 rounded-2xl bg-background p-6 sm:p-8">
       <label className="block font-semibold">Letter code <span className="font-normal text-muted-foreground">(optional)</span>
-        <input name="letter_code" maxLength={40} placeholder="e.g. A351057800" className={field} />
+        <input name="letter_code" maxLength={40} placeholder="e.g. A123456789" className={field} />
       </label>
       <label className="block font-semibold">Full name
         <input name="full_name" required maxLength={200} autoComplete="name" className={field} />
@@ -205,9 +208,9 @@ function LeadForm() {
       <fieldset>
         <legend className="font-semibold">Best time to reach you</legend>
         <div className="mt-2 grid grid-cols-3 gap-2">
-          {["Morning", "Afternoon", "Evening"].map((t, i) => (
+          {["Morning", "Afternoon", "Evening"].map((t) => (
             <label key={t} className="flex min-h-14 cursor-pointer items-center justify-center rounded-xl border-2 border-input text-base font-medium has-[:checked]:border-primary has-[:checked]:bg-accent has-[:checked]:text-accent-foreground">
-              <input type="radio" name="best_time" value={t} defaultChecked={i === 0} className="sr-only" />{t}
+              <input type="radio" name="best_time" value={t} required className="sr-only" />{t}
             </label>
           ))}
         </div>
