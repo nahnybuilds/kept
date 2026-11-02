@@ -4,14 +4,23 @@ import { CalendarClock, FileCheck2, Search, Wallet, PhoneCall, ShieldCheck, Bell
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { supabase } from "@/integrations/supabase/client";
 import { SITE } from "@/lib/site";
+import keptSocialShare from "@/assets/kept-social-share.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Kept — Keep your Philly rental legal" },
+      { title: "Kept | Keep your Philly rental legal" },
       { name: "description", content: "We handle your lead-safe certificate inspection and city filing. You don't pay unless it gets done." },
-      { property: "og:title", content: "Kept — Keep your Philly rental legal" },
-      { property: "og:description", content: "We handle the lead-safe inspection and city filing for small Philadelphia landlords." },
+      { property: "og:title", content: "Kept | Keep your Philly rental legal" },
+      { property: "og:description", content: "We handle your lead-safe certificate inspection and city filing. You don't pay unless it gets done." },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: `https://keptlegal.co${keptSocialShare.url}` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Kept | Keep your Philly rental legal" },
+      { name: "twitter:description", content: "We handle your lead-safe certificate inspection and city filing. You don't pay unless it gets done." },
+      { name: "twitter:image", content: `https://keptlegal.co${keptSocialShare.url}` },
     ],
   }),
   component: Index,

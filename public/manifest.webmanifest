@@ -1,0 +1,12 @@
+{
+  "name": "Kept",
+  "short_name": "Kept",
+  "icons": [
+    {
+      "src": "/__l5e/assets-v1/bf1ce4af-61bb-47a5-b341-51be48e33d0d/kept-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
