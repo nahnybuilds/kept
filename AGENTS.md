@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep sitewide icon links in the root head and page-specific sharing metadata in the leaf head; use CDN asset pointers for uploaded artwork and a local ICO for favicon compatibility.
