@@ -4,4 +4,4 @@
 - [x] Pricing wording: "Free quote for your property" (no price shown)
 - [x] "Doing it yourself vs. with Kept" comparison section after "How it works"
 - [x] Replace site icons and sharing artwork with supplied Kept branding and update page metadata
-- [ ] Email notification for each new lead (needs notification email + a verified sending domain)
+- [ ] Email notification for each new lead to hello@keptlegal.co (blocked until sender domain setup and verification)
