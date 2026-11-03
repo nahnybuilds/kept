@@ -205,7 +205,7 @@ function Index() {
       <footer className="border-t border-border px-5 py-10 text-base text-muted-foreground">
         <div className="mx-auto max-w-3xl space-y-2">
           <p>
-            <span className="font-bold text-primary">Kept</span> · <a className="underline" href={SITE.phoneHref}>Call or text {SITE.phoneDisplay}</a> · <a className="underline" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+            <span className="font-bold text-primary">Kept</span> · <a className="underline" href={SITE.phoneHref}>Call or text {SITE.phoneDisplay}</a> · <span>{SITE.email}</span>
           </p>
           <p>Kept is a private company and is not affiliated with the City of Philadelphia.</p>
           <p>© 2026 Kept</p>
