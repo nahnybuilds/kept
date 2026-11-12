@@ -54,7 +54,7 @@ const withKept = [
   "You don't pay unless it's done",
 ];
 const benefits = [
-  { icon: Wallet, title: "No upfront cost", body: "You only pay once your certificate is filed." },
+  { icon: Wallet, title: "No upfront cost", body: "Nothing upfront. Pay when your results are in." },
   { icon: PhoneCall, title: "One call, done", body: "We coordinate the inspector, paperwork, and city upload." },
   { icon: ShieldCheck, title: "Protect your rent", body: "Stay legally able to collect rent and renew your license." },
   { icon: BellRing, title: "Never miss a deadline", body: "We track your lead certificate and rental license dates." },
