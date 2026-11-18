@@ -146,4 +146,5 @@
     line-height: 1.65;
   }
   html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 8rem; }
 }

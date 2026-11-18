@@ -1,8 +1,8 @@
 # Roadmap
-- [ ] Add the public sitemap and publish it
-- [ ] Improve homepage renewal wording and add the four requested FAQs
-- [ ] Create blog listing and individual article pages
-- [ ] Walk through Google Search Console connection
+- [x] Add the public sitemap and publish it
+- [x] Improve homepage renewal wording and add the four requested FAQs (preview; publish next)
+- [x] Create blog listing and individual article pages (articles added through chat; preview)
+- [ ] Walk through Google Search Console connection (awaiting Google authorization)
 - [x] Kept one-page site with lead form saved to the database
 - [x] Real phone number, tap-to-call everywhere
 - [x] Pricing wording: "Free quote for your property" (no price shown)

@@ -1,20 +1,23 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { CalendarClock, FileCheck2, Search, Wallet, PhoneCall, ShieldCheck, BellRing, Check } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { supabase } from "@/integrations/supabase/client";
 import { SITE } from "@/lib/site";
 import keptSocialShare from "@/assets/kept-social-share.png.asset.json";
+import { renewalFaqs } from "@/lib/lead-renewal";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
   head: () => ({
+    links: [{ rel: "canonical", href: "https://keptlegal.co/" }],
     meta: [
       { title: "Kept | Keep your Philly rental legal" },
       { name: "description", content: "We handle your lead-safe certificate inspection and city filing. You don't pay unless it gets done." },
       { property: "og:title", content: "Kept | Keep your Philly rental legal" },
       { property: "og:description", content: "We handle your lead-safe certificate inspection and city filing. You don't pay unless it gets done." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://keptlegal.co/" },
       { property: "og:image", content: `https://keptlegal.co${keptSocialShare.url}` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -61,12 +64,11 @@ const benefits = [
   { icon: BellRing, title: "Never miss a deadline", body: "We track your lead certificate and rental license dates." },
 ];
 const faqs: [string, string][] = [
+  ...renewalFaqs,
   ["Are you the City of Philadelphia?", "No. Kept is a private company. We're not affiliated with the City. We help landlords handle city requirements."],
   ["How did you find my property?", "Lead certificate and rental license records are public. We use them to reach landlords who may need help."],
   ["What if I already renewed?", "Great! Just ignore our letter, or text us and we'll update our records."],
   ["How long does it take?", "Inspections can usually be scheduled within a few days, and results are typically back within 1–3 days after that."],
-  ["What if my property doesn't pass?", "We'll explain what needs fixing, help coordinate it, and schedule a retest."],
-  ["Do I have to be there?", "Someone needs to give the inspector access. We'll help coordinate with you or your tenant."],
 ];
 
 function Section({ id, title, children, muted }: { id?: string; title: string; children: React.ReactNode; muted?: boolean }) {
@@ -102,15 +104,16 @@ function Index() {
               Keep your Philly rental legal. <span className="text-primary">We handle the paperwork.</span>
             </h1>
             <p className="mt-6 text-xl text-muted-foreground">
-              If your rental's lead-safe certificate has expired or is about to, we take care of the inspection and city filing for you. You don't pay unless it gets done.
+              We coordinate Philadelphia lead-safe certificate renewals for landlords: the certified inspection, tenant access, and city filing. If your certificate has expired or is about to, we handle the details. You don't pay unless it gets done.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#start" className={btnPrimary}>I got a letter</a>
+              <a href="#start" className={btnPrimary}>Get a free quote</a>
               <a href={SITE.phoneHref} className={btnOutline}>Call or text {SITE.phoneDisplay}</a>
             </div>
             <p className="mt-4 text-base">
               <a href={SITE.smsHref} className="font-semibold text-primary underline underline-offset-4 hover:no-underline">Text us</a>
             </p>
+            <p className="mt-3 text-base text-muted-foreground">Got our letter? You're in the right place. No letter? You're welcome to request a quote, too.</p>
           </div>
         </section>
 
@@ -187,7 +190,8 @@ function Index() {
           </div>
         </Section>
 
-        <Section id="start" title="Got our letter? Let's get started." muted>
+        <Section id="start" title="Let's get your renewal started." muted>
+          <p className="mb-6 text-lg text-muted-foreground">Whether you got our letter or found us here, request a free quote for your Philadelphia property. A letter code is optional.</p>
           <LeadForm />
         </Section>
 
@@ -196,7 +200,7 @@ function Index() {
             {faqs.map(([q, a]) => (
               <AccordionItem key={q} value={q}>
                 <AccordionTrigger className="py-5 text-left text-lg font-semibold">{q}</AccordionTrigger>
-                <AccordionContent className="text-lg text-muted-foreground">{a}</AccordionContent>
+                <AccordionContent forceMount className="text-lg text-muted-foreground data-[state=closed]:hidden">{a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -209,6 +213,7 @@ function Index() {
             <span className="font-bold text-primary">Kept</span> · <a className="underline" href={SITE.phoneHref}>Call or text {SITE.phoneDisplay}</a> · <span>{SITE.email}</span>
           </p>
           <p>Kept is a private company and is not affiliated with the City of Philadelphia.</p>
+          <p><Link to="/blog" className="text-primary underline underline-offset-4">Philadelphia landlord articles</Link></p>
           <p>© 2026 Kept</p>
         </div>
       </footer>

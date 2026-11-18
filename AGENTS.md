@@ -11,3 +11,4 @@
 
 - Keep sitewide icon links in the root head and page-specific sharing metadata in the leaf head; use CDN asset pointers for uploaded artwork and a local ICO for favicon compatibility.
 - Derive sitemap static paths from required route inclusion decisions; use the public article collection for dynamic paths so new content is discoverable automatically.
+- Keep approved blog articles in one typed, code-backed collection; listing, individual SSR pages, metadata and matching visible FAQ schema derive from it so articles can be added through chat without exposing a public editor.
