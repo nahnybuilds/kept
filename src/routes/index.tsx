@@ -7,6 +7,7 @@ import { SITE } from "@/lib/site";
 import keptSocialShare from "@/assets/kept-social-share.png.asset.json";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Kept | Keep your Philly rental legal" },

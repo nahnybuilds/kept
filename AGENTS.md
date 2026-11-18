@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep sitewide icon links in the root head and page-specific sharing metadata in the leaf head; use CDN asset pointers for uploaded artwork and a local ICO for favicon compatibility.
+- Derive sitemap static paths from required route inclusion decisions; use the public article collection for dynamic paths so new content is discoverable automatically.
