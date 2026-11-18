@@ -1,4 +1,6 @@
 # Roadmap
+- [x] Publish current homepage, FAQs, and blog (live blog verified)
+- [x] Add supplied landlord guide with exact metadata, links, matching FAQ schema, and free-check button (verified; second publication next)
 - [x] Add the public sitemap and publish it
 - [x] Improve homepage renewal wording and add the four requested FAQs (preview; publish next)
 - [x] Create blog listing and individual article pages (articles added through chat; preview)

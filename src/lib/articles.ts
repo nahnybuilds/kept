@@ -1,17 +1,19 @@
 import { renewalFaqs } from "./lead-renewal";
+import { landlordGuide } from "./landlord-guide";
 
 export interface Article {
   slug: string;
   title: string;
   seoTitle: string;
   description: string;
+  markdown?: string;
   sections: { heading: string; paragraphs: string[] }[];
   faqs: [string, string][];
   sources: { title: string; url: string }[];
 }
 
 // Add approved articles here; listing, detail metadata and sitemap share this collection.
-export const articles: Article[] = [{
+export const articles: Article[] = [landlordGuide, {
   slug: "philadelphia-lead-safe-certificate-renewal",
   title: "Philadelphia lead-safe certificate renewal",
   seoTitle: "Philadelphia Lead-Safe Certificate Renewal Guide | Kept",

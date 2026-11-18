@@ -1,6 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteFrame } from "@/components/site-frame";
 import { findArticle, articleStructuredData } from "@/lib/articles";
+import ReactMarkdown from "react-markdown";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/blog/$slug")({
   staticData: { sitemap: true },
@@ -31,6 +33,13 @@ function ArticlePage() {
     <Link to="/blog" className="font-semibold text-primary underline underline-offset-4">← Kept blog</Link>
     <article className="mt-8">
       <h1 className="text-4xl font-bold leading-tight sm:text-5xl">{article.title}</h1>
+      {article.markdown ? <ReactMarkdown components={{
+        h2: ({ children }) => <h2 className="mt-10 text-2xl font-bold">{children}</h2>,
+        p: ({ children }) => <p className="mt-4">{children}</p>,
+        ul: ({ children }) => <ul className="mt-4 list-disc space-y-3 pl-6">{children}</ul>,
+        ol: ({ children }) => <ol className="mt-4 list-decimal space-y-3 pl-6">{children}</ol>,
+        a: ({ href, children }) => href === "https://keptlegal.co" ? <Button asChild className="my-4 h-auto min-h-14 whitespace-normal rounded-xl px-6 py-3 text-center text-lg"><Link to="/" hash="start">{children}</Link></Button> : <a href={href} className="text-primary underline underline-offset-4">{children}</a>,
+      }}>{article.markdown}</ReactMarkdown> : <>
       <p className="mt-6 text-xl text-muted-foreground">{article.description}</p>
       {article.sections.map((section) => <section key={section.heading} className="mt-10">
         <h2 className="text-2xl font-bold">{section.heading}</h2>
@@ -41,7 +50,8 @@ function ArticlePage() {
       </section>
       <section className="mt-10"><h2 className="text-2xl font-bold">City sources</h2><ul className="mt-4 space-y-3">{article.sources.map((source) => <li key={source.url}><a href={source.url} className="text-primary underline underline-offset-4">{source.title}</a></li>)}</ul></section>
       <p className="mt-8 text-base text-muted-foreground">General information, not legal advice. Confirm the requirements for your property with the City and your certified inspector.</p>
+      </>}
     </article>
-    <div className="mt-12 border-t border-border pt-8"><h2 className="text-2xl font-bold">Get a free quote for your property</h2><p className="mt-3 text-muted-foreground">No letter needed. Kept coordinates your renewal.</p><Link to="/" hash="start" className="mt-5 inline-flex min-h-14 items-center justify-center rounded-xl bg-primary px-6 text-lg font-semibold text-primary-foreground hover:bg-primary/90">Request a call back</Link></div>
+    {!article.markdown && <div className="mt-12 border-t border-border pt-8"><h2 className="text-2xl font-bold">Get a free quote for your property</h2><p className="mt-3 text-muted-foreground">No letter needed. Kept coordinates your renewal.</p><Link to="/" hash="start" className="mt-5 inline-flex min-h-14 items-center justify-center rounded-xl bg-primary px-6 text-lg font-semibold text-primary-foreground hover:bg-primary/90">Request a call back</Link></div>}
   </main></SiteFrame>;
 }
