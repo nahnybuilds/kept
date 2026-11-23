@@ -51,6 +51,7 @@ function ArticlePage() {
       <section className="mt-10"><h2 className="text-2xl font-bold">City sources</h2><ul className="mt-4 space-y-3">{article.sources.map((source) => <li key={source.url}><a href={source.url} className="text-primary underline underline-offset-4">{source.title}</a></li>)}</ul></section>
       <p className="mt-8 text-base text-muted-foreground">General information, not legal advice. Confirm the requirements for your property with the City and your certified inspector.</p>
       </>}
+      {article.slug === "philadelphia-lead-safe-certificate-renewal" && <p className="mt-8">For the full overview, read <Link to="/blog/$slug" params={{ slug: "philadelphia-lead-safe-certificate" }} className="text-primary underline underline-offset-4">Philadelphia Lead-Safe Certificate: A Landlord's Guide</Link>.</p>}
     </article>
     {!article.markdown && <div className="mt-12 border-t border-border pt-8"><h2 className="text-2xl font-bold">Get a free quote for your property</h2><p className="mt-3 text-muted-foreground">No letter needed. Kept coordinates your renewal.</p><Link to="/" hash="start" className="mt-5 inline-flex min-h-14 items-center justify-center rounded-xl bg-primary px-6 text-lg font-semibold text-primary-foreground hover:bg-primary/90">Request a call back</Link></div>}
   </main></SiteFrame>;

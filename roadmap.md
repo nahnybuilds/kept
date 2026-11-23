@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Update renewal payment wording and cross-link the renewal article and landlord guide (both links verified)
 - [x] Publish current homepage, FAQs, and blog (live blog verified)
 - [x] Add supplied landlord guide with exact metadata, links, matching FAQ schema, and free-check button (verified; second publication next)
 - [x] Add the public sitemap and publish it
