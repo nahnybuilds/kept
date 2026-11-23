@@ -13,7 +13,7 @@ export const rentalLicenseRenewal: Article = {
   slug: "philadelphia-rental-license-renewal",
   title: "Philadelphia Rental License Renewal: Step-by-Step Checklist",
   seoTitle: "Philadelphia Rental License Renewal: Step-by-Step Checklist",
-  description: "Renewing your Philadelphia rental license? Here's the step-by-step checklist, the fee, deadlines, and the lead certificate issue that blocks most renewals.",
+  description: "Renewing your Philadelphia rental license? Here's the step-by-step checklist, the fee, deadlines, and the lead certificate issue that blocks many renewals.",
   markdown: `**Your Philadelphia rental license has to be renewed every year. The renewal itself is simple. What usually holds it up is everything that has to be in order first.**
 
 If you rent out property in Philadelphia, you need a rental license from the Department of Licenses and Inspections (L&I), and it's only good for one year. This checklist walks you through what you need, what it costs, and the one issue that catches many long-time landlords off guard.
