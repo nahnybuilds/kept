@@ -107,8 +107,8 @@ function Index() {
               We coordinate Philadelphia lead-safe certificate renewals for landlords: the certified inspection, tenant access, and city filing. If your certificate has expired or is about to, we handle the details. You don't pay unless it gets done.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#start" className={btnPrimary}>Get a free quote</a>
-              <a href={SITE.phoneHref} className={btnOutline}>Call or text {SITE.phoneDisplay}</a>
+              <Link to="/check" className={btnPrimary}>Check my property free</Link>
+              <a href="#start" className={btnOutline}>Get a free quote</a>
             </div>
             <p className="mt-4 text-base">
               <a href={SITE.smsHref} className="font-semibold text-primary underline underline-offset-4 hover:no-underline">Text us</a>
