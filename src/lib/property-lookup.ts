@@ -58,11 +58,17 @@ function pick(row: Record<string, unknown>, ...keys: string[]): unknown {
   return null;
 }
 
-function classifyByDate(expires: string | null, today: Date): Status {
+const DAY_MS = 24 * 3600 * 1000;
+// Lead-safe certificates last 4 years, so flag them a year ahead. Rental
+// licenses renew every year, so only flag the last 60 days.
+const LEAD_WARN_DAYS = 365;
+const LICENSE_WARN_DAYS = 60;
+
+function classifyByDate(expires: string | null, today: Date, warnDays: number): Status {
   if (!expires) return "unknown";
   const ms = new Date(expires).getTime() - today.getTime();
   if (ms < 0) return "expired";
-  if (ms <= 365 * 24 * 3600 * 1000) return "expiring";
+  if (ms <= warnDays * DAY_MS) return "expiring";
   return "current";
 }
 
@@ -74,7 +80,7 @@ export function classifyLead(row: Record<string, unknown>, today = new Date()) {
   if (raw.includes("exempt") || (yearBuilt !== null && yearBuilt >= 1978)) status = "exempt";
   else if (raw.includes("expired")) status = "expired";
   else if (raw.includes("not certified") || raw === "") status = "missing";
-  else if (raw.includes("certified")) status = expires ? classifyByDate(expires, today) : "current"; // lead-free certs have no expiry
+  else if (raw.includes("certified")) status = expires ? classifyByDate(expires, today, LEAD_WARN_DAYS) : "current"; // lead-free certs have no expiry
   else status = "unknown";
   return { status, label: labels.lead[status], expires };
 }
@@ -85,7 +91,7 @@ export function classifyLicense(row: Record<string, unknown>, today = new Date()
   let status: Status;
   if ((!raw || raw === "none") && !expires) status = "missing";
   else if (raw && raw !== "active") status = "expired";
-  else status = classifyByDate(expires, today);
+  else status = classifyByDate(expires, today, LICENSE_WARN_DAYS);
   return { status, label: labels.license[status], expires };
 }
 
@@ -100,7 +106,7 @@ const labels = {
   },
   license: {
     current: "Rental license active",
-    expiring: "Rental license renews within a year",
+    expiring: "Rental license due for renewal within 60 days",
     expired: "Rental license not active",
     missing: "No rental license found",
     exempt: "Rental license not required",
@@ -123,7 +129,7 @@ export function leadCertsQueryUrl(normalized: string): string {
 }
 
 export function violationsQueryUrl(opaAccount: string): string {
-  const q = `SELECT * FROM violations WHERE opa_account_num = ${sqlString(opaAccount)} ORDER BY violationdate DESC LIMIT 50`;
+  const q = `SELECT * FROM violations WHERE opa_account_num = ${sqlString(opaAccount)} ORDER BY violationdate DESC LIMIT 500`;
   return `${CARTO_URL}?${new URLSearchParams({ q })}`;
 }
 
