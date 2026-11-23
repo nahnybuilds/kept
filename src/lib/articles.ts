@@ -1,5 +1,6 @@
 import { renewalFaqs } from "./lead-renewal";
 import { landlordGuide } from "./landlord-guide";
+import { rentalLicenseRenewal } from "./rental-license-renewal";
 
 export interface Article {
   slug: string;
@@ -13,7 +14,7 @@ export interface Article {
 }
 
 // Add approved articles here; listing, detail metadata and sitemap share this collection.
-export const articles: Article[] = [landlordGuide, {
+export const articles: Article[] = [rentalLicenseRenewal, landlordGuide, {
   slug: "philadelphia-lead-safe-certificate-renewal",
   title: "Philadelphia lead-safe certificate renewal",
   seoTitle: "Philadelphia Lead-Safe Certificate Renewal Guide | Kept",

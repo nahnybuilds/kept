@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Add supplied rental-license renewal article, five FAQs, preserved links, guide link, form button, and sitemap (phone and desktop verified; publication requested)
 - [x] Publish verified article payment wording and reciprocal links (both public article pages verified)
 - [x] Research and save 30 landlord compliance searches, five article topics, and a $10/day ads shortlist (dated report and CSV saved in Files)
 - [x] Update renewal payment wording and cross-link the renewal article and landlord guide (both links verified)
