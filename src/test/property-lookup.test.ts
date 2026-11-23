@@ -33,6 +33,7 @@ describe("classifyLicense", () => {
   it("reads active and expiry", () => {
     expect(classifyLicense({ li_rl_status: "Active", li_rl_expiration_date: "2027-01-01" }, today).status).toBe("expiring");
     expect(classifyLicense({ li_rl_status: "Inactive" }, today).status).toBe("expired");
+    expect(classifyLicense({ li_rl_status: "None" }, today).status).toBe("missing");
     expect(classifyLicense({}, today).status).toBe("missing");
   });
 });
@@ -41,6 +42,9 @@ describe("isOpenViolation", () => {
   it("treats closed and complied as resolved", () => {
     expect(isOpenViolation({ violationstatus: "OPEN" })).toBe(true);
     expect(isOpenViolation({ violationstatus: "COMPLIED" })).toBe(false);
+    expect(isOpenViolation({ violationstatus: "CMPLY" })).toBe(false);
+    expect(isOpenViolation({ violationstatus: "RESOLVE" })).toBe(false);
+    expect(isOpenViolation({ violationstatus: "COMPEXCP" })).toBe(false);
     expect(isOpenViolation({ casestatus: "CLOSED" })).toBe(false);
   });
 });
@@ -57,9 +61,12 @@ describe("lookupProperty", () => {
     const r = await lookupProperty("114 South 45th Street", fake, today);
     expect(r.ok).toBe(true);
     if (!r.ok) return;
-    expect(r.matches[0].lead.status).toBe("expired");
-    expect(r.matches[0].license.status).toBe("expiring");
-    expect(r.matches[0].violations?.open).toBe(1);
+    const match = r.matches[0];
+    expect(match).toBeDefined();
+    if (!match) return;
+    expect(match.lead.status).toBe("expired");
+    expect(match.license.status).toBe("expiring");
+    expect(match.violations?.open).toBe(1);
   });
   it("rejects input without a house number", async () => {
     expect(await lookupProperty("main street")).toEqual({ ok: false, error: "bad_address" });

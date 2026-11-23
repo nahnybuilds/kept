@@ -83,7 +83,7 @@ export function classifyLicense(row: Record<string, unknown>, today = new Date()
   const raw = String(pick(row, "li_rl_status", "rental_license_status", "licensestatus") ?? "").toLowerCase();
   const expires = parseDate(pick(row, "li_rl_expiration_date", "rental_license_expiration_date", "expirationdate"));
   let status: Status;
-  if (!raw && !expires) status = "missing";
+  if ((!raw || raw === "none") && !expires) status = "missing";
   else if (raw && raw !== "active") status = "expired";
   else status = classifyByDate(expires, today);
   return { status, label: labels.license[status], expires };
@@ -108,7 +108,7 @@ const labels = {
   },
 } satisfies Record<string, Record<Status, string>>;
 
-const CLOSED = /(closed|complied|resolved|cancel|void|withdrawn)/i;
+const CLOSED = /(closed|compli|cmply|compexcp|resolv|cancel|void|withdrawn|demolish|error)/i;
 export function isOpenViolation(row: Record<string, unknown>): boolean {
   const status = String(pick(row, "violationstatus", "status", "casestatus") ?? "");
   return status !== "" && !CLOSED.test(status);
